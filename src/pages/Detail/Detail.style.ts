@@ -37,7 +37,7 @@ export const S = {
     height: 408px;
   `,
   ProductImg: styled.div<ProductImgProps>`
-    background-image: url(${(props) => props.imgUrl});
+    background-image: ${({ imgUrl }) => `url("${imgUrl}")`};
     background-size: cover;
     background-position: center;
     width: 456px;

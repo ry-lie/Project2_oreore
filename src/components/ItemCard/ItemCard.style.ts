@@ -28,7 +28,7 @@ export const S = {
 
     border-radius: 5px;
 
-    background-image: url(${(props) => props.imgUrl});
+    background-image: ${({ imgUrl }) => `url("${imgUrl}")`};
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

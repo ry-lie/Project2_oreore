@@ -34,7 +34,7 @@ export const S = {
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-image: url(${(props) => props.imgUrl});
+    background-image: ${({ imgUrl }) => `url("${imgUrl}")`};
     background-size: cover;
     background-position: center;
     border-radius: 5px;

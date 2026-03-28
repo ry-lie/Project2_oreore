@@ -100,11 +100,11 @@ const MyPage = () => {
       const res = await deleteAxios(`/products/${id}`);
 
       if (res.status === 200) {
-        toast.success("✨상품이 삭제되었습니다.");
+        toast.success("✨Item has been removed.");
         getSellingItems();
-      } else toast.warn("상품 삭제를 실패했습니다. 다시 시도해주세요.");
+      } else toast.warn("Failed to remove the item. Please try again.");
     } catch (error) {
-      toast.error("상품 삭제 중 오류가 발생했습니다.");
+      toast.error("An error occurred while removing the item.");
     }
   };
 
@@ -137,7 +137,7 @@ const MyPage = () => {
     <S.MyPageWrap>
       {modalType === "deleteProduct" && (
         <ConfirmModal
-          modalText="상품이 삭제되었습니다"
+          modalText="Item has been removed."
           onClick={handleDeleteModalClick}
         />
       )}
@@ -149,19 +149,19 @@ const MyPage = () => {
           />
           <S.UserName>{user.user?.nickname}</S.UserName>
           <Button
-            btnText="정보 수정하기"
+            btnText="Edit Info"
             bgcolor="orange70"
             onClick={editProfile}
           />
           <Button
-            btnText="상품 등록하기"
+            btnText="Add Product"
             bgcolor="orange70"
             onClick={addproduct}
           />
         </S.SideProfile>
         <S.MyPageContent>
           <S.SellingBox>
-            <S.TitleBox>판매중인 상품</S.TitleBox>
+            <S.TitleBox>Products for Sale</S.TitleBox>
             <S.ItemGrid>
               {sellingItems.length > 0 ? (
                 sellingItems.map((sellingItem, idx) => {
@@ -183,7 +183,7 @@ const MyPage = () => {
                   );
                 })
               ) : (
-                <S.EmptyCart>판매 중인 상품이 없습니다.</S.EmptyCart>
+                <S.EmptyCart>No products for sale.</S.EmptyCart>
               )}
             </S.ItemGrid>
             <S.PaginationBox>
@@ -208,7 +208,7 @@ const MyPage = () => {
             </S.PaginationBox>
           </S.SellingBox>
           <S.PurchaseList>
-            <S.TitleBox>구매 내역</S.TitleBox>
+            <S.TitleBox>Purchase History</S.TitleBox>
             {purchasedItems.length > 0 ? (
               filteredCartItems.map(({ date, items }) => (
                 <div key={date}>
@@ -220,7 +220,7 @@ const MyPage = () => {
                           page="mypage"
                           imageSrc={cartItem.imageSrc}
                           title={cartItem.itemName}
-                          description={`${cartItem.price.toLocaleString()} 원`}
+                          description={`$${cartItem.price.toLocaleString()}`}
                         />
                       </Link>
 
@@ -235,7 +235,7 @@ const MyPage = () => {
                 </div>
               ))
             ) : (
-              <S.EmptyCart>구매 내역이 없습니다.</S.EmptyCart>
+              <S.EmptyCart>No purchase history.</S.EmptyCart>
             )}
           </S.PurchaseList>
         </S.MyPageContent>

@@ -110,13 +110,13 @@ const AddOrEditProduct = () => {
         });
 
         if (res.status === 201) {
-          toast.success("✨ 상품등록이 완료되었습니다!");
+          toast.success("✨Product listed successfully!");
           navigate("/users/my");
         } else {
-          toast.error("상품 등록에 실패했습니다. 다시 시도해주세요.");
+          toast.error("Failed to list the product. Please try again.");
         }
       } catch (error) {
-        toast.error("상품 등록 중 오류가 발생했습니다.");
+        toast.error("An error occurred while listing the product.");
       }
     } else openModal("valid");
   };
@@ -141,13 +141,13 @@ const AddOrEditProduct = () => {
         });
 
         if (res.status === 200) {
-          toast.success("✨상품 정보가 수정되었습니다.");
+          toast.success("✨Product updated successfully.");
           navigate("/users/my");
         } else {
-          toast.warn("상품 수정에 실패했습니다. 다시 시도해주세요");
+          toast.warn("Failed to update the product. Please try again.");
         }
       } catch (error) {
-        toast.error("상품 정보 수정 중 오류가 발생했습니다.");
+        toast.error("An error occurred while updating the product.");
       }
     } else openModal("valid");
   };
@@ -169,19 +169,19 @@ const AddOrEditProduct = () => {
     <S.AddOrEditProduct>
       {modalType === "valid" ? (
         <ConfirmModal
-          modalText="필수 입력 사항을 모두 입력해주세요"
+          modalText="Please fill in all required fields."
           onClick={closeModal}
         />
       ) : modalType === "login" ? (
         <ConfirmModal
-          modalText="로그인 후 다시 시도해주세요"
+          modalText="Please log in and try again."
           onClick={redirectToLogin}
         />
       ) : (
         ""
       )}
       <Nav />
-      <S.TitleBox>상품 정보</S.TitleBox>
+      <S.TitleBox>Product Information</S.TitleBox>
 
       <S.UploadImgBox onClick={handleImgInputClick}>
         {hasFile ? (
@@ -191,8 +191,8 @@ const AddOrEditProduct = () => {
         ) : (
           <>
             <S.UploadIcon />
-            <S.UploadText>이미지 등록</S.UploadText>
-            <S.Essential>필수 등록</S.Essential>
+            <S.UploadText>Upload Image</S.UploadText>
+            <S.Essential>Required</S.Essential>
           </>
         )}
         <S.ImgUpload
@@ -203,10 +203,10 @@ const AddOrEditProduct = () => {
           onChange={handleImageChange}
         />
       </S.UploadImgBox>
-      {hasFile && <S.EditImgBtn>사진 수정하기</S.EditImgBtn>}
+      {hasFile && <S.EditImgBtn>Change Photo</S.EditImgBtn>}
       <S.InfoTable hasFile={hasFile}>
         <S.GridTitle>
-          카테고리<S.Essential>필수 입력</S.Essential>
+          Category<S.Essential>Required</S.Essential>
         </S.GridTitle>
         <S.GridContent>
           <S.CategoryWrap>
@@ -232,42 +232,42 @@ const AddOrEditProduct = () => {
         </S.GridContent>
 
         <S.GridTitle>
-          상품명<S.Essential>필수 입력</S.Essential>
+          Product Name<S.Essential>Required</S.Essential>
         </S.GridTitle>
         <S.GridContent>
           <UserInput
             name="productName"
             type="text"
             width="234px"
-            placeholder="상품명을 입력해주세요"
+            placeholder="Enter product name"
             value={inputValue.productName}
             onChange={(value) => handleInputChange("productName", value)}
           />
         </S.GridContent>
 
         <S.GridTitle>
-          상품 가격<S.Essential>필수 입력</S.Essential>
+          Price<S.Essential>Required</S.Essential>
         </S.GridTitle>
         <S.GridContent>
           <UserInput
             name="productPrice"
             type="text"
             width="234px"
-            placeholder="상품 가격을 입력해주세요"
+            placeholder="Enter price"
             value={inputValue.productPrice}
             onChange={(value: string) => {
               if (/^\d*$/.test(value)) {
                 handleInputChange("productPrice", value);
               } else {
                 handleInputChange("productPrice", "");
-                toast.warn("숫자만 입력해주세요");
+                toast.warn("Please enter numbers only.");
               }
             }}
           />
         </S.GridContent>
 
         <S.GridTitle>
-          상세 설명<S.Essential>필수 입력</S.Essential>
+          Description<S.Essential>Required</S.Essential>
         </S.GridTitle>
 
         <S.GridContent>
@@ -284,13 +284,13 @@ const AddOrEditProduct = () => {
       </S.InfoTable>
       {location.pathname === "/addproduct" ? (
         <Button
-          btnText="상품 등록하기"
+          btnText="List Product"
           bgcolor="orange70"
           onClick={postProducts}
         />
       ) : (
         <Button
-          btnText="상품 수정하기"
+          btnText="Update Product"
           bgcolor="orange70"
           onClick={putProduct}
         />

@@ -56,18 +56,18 @@ export default function SignupPage() {
 
     try {
       await registerUser(payload);
-      toast.info("회원가입이 완료되었습니다.");
+      toast.info("Signup completed successfully.");
       navigate(ROUTE_LINK.LOGIN.path);
     } catch (error: unknown) {
-      console.error("회원가입 실패:", error);
-      toast.error("회원가입에 실패했습니다.");
+      console.error("Signup failed:", error);
+      toast.error("Signup failed. Please try again.");
     }
   };
 
   const checkEmail = async () => {
     const email = watch("email");
     if (!email) {
-      toast.warn("이메일을 입력해주세요.");
+      toast.warn("Please enter your email.");
       return;
     }
 
@@ -78,7 +78,7 @@ export default function SignupPage() {
   const checkNickname = async () => {
     const nickname = watch("nickname");
     if (!nickname) {
-      toast.warn("닉네임을 입력해주세요.");
+      toast.warn("Please enter your nickname.");
       return;
     }
 
@@ -91,45 +91,45 @@ export default function SignupPage() {
       <Nav />
       <S.Container>
         <FormContainer onSubmit={onSubmit} methods={methods}>
-          <S.Title>회원가입</S.Title>
+          <S.Title>Sign Up</S.Title>
 
           <S.InputContainer>
             <InputField
               name="email"
-              label="이메일"
-              placeholder="아이디를 입력하세요."
+              label="Email"
+              placeholder="Enter your email."
             />
             <S.CheckButton type="button" onClick={checkEmail}>
-              중복확인
+              Check
             </S.CheckButton>
           </S.InputContainer>
           {emailValid === true && (
-            <S.HelperText>사용할 수 있는 이메일 입니다.</S.HelperText>
+            <S.HelperText>Email is available.</S.HelperText>
           )}
           {emailValid === false && (
             <S.HelperText style={{ color: "red" }}>
-              이미 사용중인 이메일입니다.
+              This email is already in use.
             </S.HelperText>
           )}
 
           <S.InputContainer>
             <InputField
               name="password"
-              label="비밀번호"
+              label="Password"
               type="password"
-              placeholder="비밀번호를 입력하세요."
+              placeholder="Enter your password."
             />
           </S.InputContainer>
           <S.InputContainer>
             <InputField
               name="confirmPassword"
-              label="비밀번호 확인"
+              label="Confirm Password"
               type="password"
-              placeholder="비밀번호를 다시 입력하세요"
+              placeholder="Re-enter your password"
               rules={{
                 validate: (value) =>
                   value === watch("password") ||
-                  "비밀번호가 일치하지 않습니다.",
+                  "Passwords do not match.",
               }}
               error={errors.confirmPassword?.message}
             />
@@ -138,45 +138,45 @@ export default function SignupPage() {
           <S.InputContainer>
             <InputField
               name="name"
-              label="이름"
-              placeholder="이름을 입력하세요"
+              label="Name"
+              placeholder="Enter your name"
             />
           </S.InputContainer>
 
           <S.InputContainer>
             <InputField
               name="nickname"
-              label="닉네임"
-              placeholder="닉네임을 입력하세요"
+              label="Nickname"
+              placeholder="Enter your nickname"
             />
             <S.CheckButton type="button" onClick={checkNickname}>
-              중복확인
+              Check
             </S.CheckButton>
           </S.InputContainer>
           {nicknameValid === true && (
-            <S.HelperText>사용할 수 있는 닉네임입니다.</S.HelperText>
+            <S.HelperText>Nickname is available.</S.HelperText>
           )}
           {nicknameValid === false && (
             <S.HelperText style={{ color: "red" }}>
-              이미 사용중인 닉네임입니다.
+              This nickname is already in use.
             </S.HelperText>
           )}
 
           <S.InputContainer style={{ gap: "10px" }}>
             <InputField
               name="phoneFirst"
-              label="전화번호"
-              placeholder="앞자리"
+              label="Phone Number"
+              placeholder="Area code"
             />
-            <InputField name="phoneSecond" placeholder="나머지 번호" />
+            <InputField name="phoneSecond" placeholder="Remaining digits" />
           </S.InputContainer>
 
           <div>
             <S.InputContainer style={{ marginBottom: "10px" }}>
               <InputField
                 name="postalCode"
-                label="우편번호"
-                placeholder="우편번호를 입력하세요"
+                label="Postal Code"
+                placeholder="Enter postal code"
                 readOnly
               />
               <AddressSearch setValue={setValue} clearErrors={clearErrors} />
@@ -184,17 +184,17 @@ export default function SignupPage() {
             <S.InputContainer style={{ flexDirection: "column", gap: "10px" }}>
               <InputField
                 name="address"
-                placeholder="주소를 입력하세요"
+                placeholder="Enter your address"
                 readOnly
               />
               <InputField
                 name="detailAddress"
-                placeholder="상세 주소를 입력하세요"
+                placeholder="Enter detailed address"
               />
             </S.InputContainer>
           </div>
 
-          <S.SubmitButton type="submit">회원가입</S.SubmitButton>
+          <S.SubmitButton type="submit">Sign Up</S.SubmitButton>
         </FormContainer>
       </S.Container>
     </>

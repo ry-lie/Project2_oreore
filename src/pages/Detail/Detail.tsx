@@ -67,8 +67,8 @@ const Detail = () => {
     if (!check) {
       cartItems.push(newItem);
       localStorage.setItem("products", JSON.stringify(cartItems));
-      toast.success("✨장바구니에 상품이 등록되었습니다.");
-    } else toast.error("이미 장바구니에 등록된 상품입니다.");
+      toast.success("✨Item has been added to your cart.");
+    } else toast.error("This item is already in your cart.");
   };
 
   const handleModalBtnClick = () => {
@@ -81,7 +81,7 @@ const Detail = () => {
 
     if (userId === item?.sellerId._id) {
       navigate("/editproduct", { state: productId });
-    } else toast.warn("다른 사람의 상품입니다.");
+    } else toast.warn("This item belongs to another seller.");
   };
 
   const purchase = () => {
@@ -105,13 +105,13 @@ const Detail = () => {
       {modalType === "addCartItem" && (
         <ConfirmModal
           width="140px"
-          modalText="장바구니로 이동하시겠습니까?"
+          modalText="Item added to your cart. Go to cart?"
           onClick={handleModalBtnClick}
         />
       )}
       {modalType === "existCartItem" && (
         <ConfirmModal
-          modalText="이미 장바구니에 담겨있습니다."
+          modalText="Already in your cart."
           onClick={closeModal}
         />
       )}
@@ -129,7 +129,7 @@ const Detail = () => {
 
                 <S.ProductName>{item.name}</S.ProductName>
                 <S.ProductPrice>
-                  <S.Bold>{formatPrice(item.price)}</S.Bold> 원
+                  $<S.Bold>{formatPrice(item.price)}</S.Bold>
                 </S.ProductPrice>
                 <S.InfoBox>
                   <S.SellerIcon />
@@ -137,18 +137,18 @@ const Detail = () => {
                 </S.InfoBox>
                 <S.InfoBox>
                   <S.DeliveryIcon />
-                  <S.greyText>배송비 무료</S.greyText>
+                  <S.greyText>Free shipping</S.greyText>
                 </S.InfoBox>
               </div>
 
               <S.BtnWrap>
                 <Button
-                  btnText="장바구니 담기"
+                  btnText="Add to Cart"
                   bgcolor="blue70"
                   onClick={addToCart}
                 />
                 <Button
-                  btnText="바로구매 하기"
+                  btnText="Buy Now"
                   bgcolor="orange70"
                   onClick={purchase}
                 />
@@ -158,10 +158,10 @@ const Detail = () => {
 
           <S.NavBar>
             <S.NavCell>
-              <S.NavText>상품 정보</S.NavText>
+              <S.NavText>Product Information</S.NavText>
             </S.NavCell>
             <S.NavCell>
-              <S.NavText onClick={handleSellerInfoClick}>판매자 정보</S.NavText>
+              <S.NavText onClick={handleSellerInfoClick}>Seller Information</S.NavText>
             </S.NavCell>
           </S.NavBar>
 

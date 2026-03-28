@@ -44,7 +44,7 @@ const AddressSearch = ({ setValue, clearErrors }: AddressSearchProps) => {
 
   return (
     <CheckButton type="button" onClick={loadDaumPostcode}>
-      주소 찾기
+      Search
     </CheckButton>
   );
 };

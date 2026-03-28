@@ -22,7 +22,7 @@ const LoginPage = () => {
   const onSubmit = async (data: FormValues) => {
     try {
       await login(data.email, data.password);
-      toast.success("✨로그인 성공 !");
+      toast.success("✨Login successful!");
       navigate(ROUTE_LINK.LIST.path);
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
@@ -38,29 +38,29 @@ const LoginPage = () => {
       <S.Container>
         <FormContainer onSubmit={onSubmit} methods={methods}>
           <S.Logo>
-            <S.LogoImage src="/logo.png" alt="오래오래 로고" />
-            오래오래
+            <S.LogoImage src="/logo.png" alt="OreOre logo" />
+            OreOre
           </S.Logo>
           <S.InputContainer>
             <InputField
               name="email"
-              label="이메일"
-              placeholder="아이디를 입력하세요."
+              label="Email"
+              placeholder="Enter your email."
             />
           </S.InputContainer>
 
           <S.InputContainer>
             <InputField
               name="password"
-              label="비밀번호"
+              label="Password"
               type="password"
-              placeholder="비밀번호를 입력하세요."
+              placeholder="Enter your password."
             />
           </S.InputContainer>
-          <S.SubmitButton type="submit">로그인</S.SubmitButton>
+          <S.SubmitButton type="submit">Log In</S.SubmitButton>
           <S.Footer>
             <S.FooterLink onClick={() => navigate(ROUTE_LINK.SIGNUP.path)}>
-              회원가입
+              Sign Up
             </S.FooterLink>
           </S.Footer>
         </FormContainer>

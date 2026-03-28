@@ -50,7 +50,7 @@ const ItemCard = ({
       </S.ProductImg>
       <S.ProductInfo idx={idx} row={row}>
         <S.ProductName>{name}</S.ProductName>
-        <S.ProductPrice>{formatPrice(price)} 원</S.ProductPrice>
+        <S.ProductPrice>${formatPrice(price)}</S.ProductPrice>
       </S.ProductInfo>
     </S.ItemCard>
   );

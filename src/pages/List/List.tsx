@@ -15,7 +15,7 @@ import useDropdown from "../../hooks/useDropdown";
 import ScrollUp from "../../components/ScrollUp/ScrollUp";
 import scrollToTop from "../../utils/scrollToTop";
 
-const options = ["최신순", "오래된순"];
+const options = ["Newest", "Oldest"];
 
 const List = () => {
   const [items, setItems] = useState<ItemProps[]>([]);
@@ -35,7 +35,7 @@ const List = () => {
   const categoryName = params.get("categoryName");
 
   const getProducts = async () => {
-    const sort = selectedItem === "오래된순" ? "oldest" : "latest";
+    const sort = selectedItem === "Oldest" ? "oldest" : "latest";
     let url = `/products?currentPage=${currentPage}&limit=${limit}&sort=${sort}`;
     if (categoryName) {
       url += `&categoryName=${categoryName}`;
@@ -110,11 +110,11 @@ const List = () => {
                 );
               })
             ) : (
-              <S.NoItem>등록된 상품이 없습니다.</S.NoItem>
+              <S.NoItem>No products available.</S.NoItem>
             )}
             {currentPage < totalPage && (
               <S.MoreBtnWrap>
-                <S.MoreBtn onClick={handleClickMoreBtn}>더보기</S.MoreBtn>
+                <S.MoreBtn onClick={handleClickMoreBtn}>More</S.MoreBtn>
               </S.MoreBtnWrap>
             )}
             <ScrollUp onClick={scrollToTop} />

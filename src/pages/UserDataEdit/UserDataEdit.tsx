@@ -60,16 +60,16 @@ export default function UserDataEditPage() {
     try {
       await updateUserProfile(payload);
       navigate(ROUTE_LINK.MYPAGE.path);
-      toast.success("✨회원 정보가 수정되었습니다.");
+      toast.success("✨Profile updated successfully.");
     } catch (error) {
-      console.error("회원 정보 수정 실패:", error);
-      toast.error("오류가 발생했습니다. 다시 시도해주세요.");
+      console.error("Failed to update profile:", error);
+      toast.error("An error occurred. Please try again.");
     }
   };
 
   const handleProfilePictureDelete = () => {
     setProfileImage(null);
-    alert("프로필 사진이 초기화되었습니다.");
+    alert("Profile picture has been reset.");
   };
 
   return (
@@ -77,9 +77,9 @@ export default function UserDataEditPage() {
       <Nav />
       <S.Container>
         <FormContainer onSubmit={onSubmit} methods={methods}>
-          <S.Title>회원정보 수정</S.Title>
+          <S.Title>Edit Profile</S.Title>
 
-          <Label>프로필 사진</Label>
+          <Label>Profile Picture</Label>
           <S.ProfilePicture>
             {profileImage ? (
               <S.ProfileImage
@@ -95,7 +95,7 @@ export default function UserDataEditPage() {
           </S.ProfilePicture>
           <S.InputContainer>
             <S.FileInputLabel>
-              사진 변경
+              Change Photo
               <S.FileInput
                 type="file"
                 accept="image/*"
@@ -104,25 +104,25 @@ export default function UserDataEditPage() {
               />
             </S.FileInputLabel>
             <S.FileButton type="button" onClick={handleProfilePictureDelete}>
-              삭제
+              Remove
             </S.FileButton>
           </S.InputContainer>
 
           <S.InputContainer style={{ gap: "10px" }}>
             <InputField
               name="phoneFirst"
-              label="전화번호"
-              placeholder="앞자리"
+              label="Phone Number"
+              placeholder="Area code"
             />
-            <InputField name="phoneSecond" placeholder="나머지 번호" />
+            <InputField name="phoneSecond" placeholder="Remaining digits" />
           </S.InputContainer>
 
           <div>
             <S.InputContainer style={{ marginBottom: "10px" }}>
               <InputField
                 name="postalCode"
-                label="우편번호"
-                placeholder="우편번호를 입력하세요"
+                label="Postal Code"
+                placeholder="Enter postal code"
                 readOnly
               />
               <AddressSearch setValue={setValue} clearErrors={clearErrors} />
@@ -130,17 +130,17 @@ export default function UserDataEditPage() {
             <S.InputContainer style={{ flexDirection: "column", gap: "10px" }}>
               <InputField
                 name="address"
-                placeholder="주소를 입력하세요"
+                placeholder="Enter your address"
                 readOnly
               />
               <InputField
                 name="detailAddress"
-                placeholder="상세 주소를 입력하세요"
+                placeholder="Enter detailed address"
               />
             </S.InputContainer>
           </div>
 
-          <S.SubmitButton type="submit">수정하기</S.SubmitButton>
+          <S.SubmitButton type="submit">Save Changes</S.SubmitButton>
         </FormContainer>
       </S.Container>
     </>

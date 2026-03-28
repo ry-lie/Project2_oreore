@@ -61,7 +61,7 @@ const CartPage: React.FC = () => {
       (item) => item.checked,
     );
     if (selectedItems.length === 0) {
-      toast.error("구매할 상품을 선택해주세요!");
+      toast.error("Please select the items you want to purchase!");
       return;
     }
     navigate(ROUTE_LINK.PAYMENT.path, { state: { selectedItems } });
@@ -164,10 +164,10 @@ const CartPage: React.FC = () => {
     return (
       <EmptyMessage
         iconType="cart"
-        message="장바구니가 비었습니다."
+        message="Your cart is empty."
         buttons={[
           {
-            btnText: "상품 담으러 가기",
+            btnText: "Browse Products",
             onClick: () => navigate(ROUTE_LINK.LIST.path),
             bgcolor: "blue70",
           },
@@ -188,12 +188,12 @@ const CartPage: React.FC = () => {
                     checked={shop.items.every((item) => item.checked)}
                     onChange={() => handleShopCheck(shopIndex)}
                   />
-                  <S.SelectAllText>모두선택</S.SelectAllText>
+                  <S.SelectAllText>Select All</S.SelectAllText>
                 </S.WrapBox>
                 <S.DeleteSelectedText
                   onClick={() => handleDeleteSelectedItems(shopIndex)}
                 >
-                  선택삭제
+                  Remove Selected
                 </S.DeleteSelectedText>
               </S.ShopHeader>
 
@@ -227,18 +227,18 @@ const CartPage: React.FC = () => {
                     <S.DeleteShopText
                       onClick={() => handleDeleteShop(shopIndex)}
                     >
-                      상점삭제
+                      Remove Store
                     </S.DeleteShopText>
                   </S.WrapBox>
                   <div>
                     <S.TotalAmount>
-                      총 상품 금액:{" "}
-                      {calculateShopTotalAmount(shop.items).toLocaleString()}원
+                      Total:{" "}
+                      ${calculateShopTotalAmount(shop.items).toLocaleString()}
                     </S.TotalAmount>
                     <Button
-                      btnText={`${calculateShopSelectedItemsCount(
+                      btnText={`Buy ${calculateShopSelectedItemsCount(
                         shop.items,
-                      )}개 상품 구매하기`}
+                      )} Items`}
                       onClick={() => handlePurchase(shopIndex)}
                       width="100%"
                       height="48px"

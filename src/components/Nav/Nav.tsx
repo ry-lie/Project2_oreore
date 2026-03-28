@@ -34,7 +34,7 @@ const Nav = () => {
       </Link>
       {TOKEN === null ? (
         <Link to={ROUTE_LINK.LOGIN.path}>
-          <S.NavBtn>로그인</S.NavBtn>
+          <S.NavBtn>Log in</S.NavBtn>
         </Link>
       ) : (
         <S.UserBox>
@@ -46,7 +46,7 @@ const Nav = () => {
             onClick={goToCart}
             location={location.pathname}
           ></S.CartIcon>
-          <S.NavBtn onClick={SignOut}>로그아웃</S.NavBtn>
+          <S.NavBtn onClick={SignOut}>Log out</S.NavBtn>
         </S.UserBox>
       )}
     </S.Nav>

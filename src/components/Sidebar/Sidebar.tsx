@@ -8,11 +8,11 @@ import {
 } from "react-icons/fa";
 
 const categories = [
-  { id: "camera", name: "카메라", icon: <FaCamera /> },
-  { id: "phone", name: "휴대폰", icon: <FaMobileAlt /> },
-  { id: "typewriter", name: "타자기", icon: <FaKeyboard /> },
-  { id: "display", name: "디스플레이", icon: <FaTv /> },
-  { id: "audio", name: "오디오 기기", icon: <FaMusic /> },
+  { id: "camera", name: "Camera", icon: <FaCamera /> },
+  { id: "phone", name: "Phone", icon: <FaMobileAlt /> },
+  { id: "typewriter", name: "Typewriter", icon: <FaKeyboard /> },
+  { id: "display", name: "Monitor", icon: <FaTv /> },
+  { id: "audio", name: "Audio", icon: <FaMusic /> },
 ];
 
 interface CategoryProps {

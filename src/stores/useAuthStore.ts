@@ -50,7 +50,7 @@ const useAuthStore = create<UserState>()(
           const { user, token } = response.data;
 
           if (!token) {
-            throw new Error("서버로부터 토큰이 발급되지 않았습니다.");
+            throw new Error("Authentication token was not received from the server.");
           }
 
           localStorage.setItem("token", token);
@@ -70,7 +70,7 @@ const useAuthStore = create<UserState>()(
             },
           });
 
-          console.log("로그인 성공:", user);
+          console.log("Login successful:", user);
         } catch (error) {
           console.error("Login failed:", error);
           throw error;
@@ -83,7 +83,7 @@ const useAuthStore = create<UserState>()(
         localStorage.removeItem("auth-storage");
         localStorage.removeItem("products");
         localStorage.removeItem("orderInfo");
-        toast.info("로그아웃 되었습니다 !");
+        toast.info("You have been logged out!");
       },
 
       register: async (userData) => {
@@ -129,7 +129,7 @@ const useAuthStore = create<UserState>()(
 
             return { user: newUser };
           });
-          console.log("회원 정보 수정 성공:", updatedUser);
+          console.log("Profile updated successfully:", updatedUser);
         } catch (error) {
           console.error("Update user profile failed:", error);
           throw error;

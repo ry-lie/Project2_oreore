@@ -21,11 +21,11 @@ export default function PasswordCheckPage() {
       if (isValid) {
         navigate(ROUTE_LINK.INFO_EDIT.path);
       } else {
-        alert("비밀번호가 일치하지 않습니다.");
+        alert("Incorrect password.");
       }
     } catch (error) {
-      console.error("비밀번호 확인 실패:", error);
-      alert("오류가 발생했습니다. 다시 시도해주세요.");
+      console.error("Password verification failed:", error);
+      alert("An error occurred. Please try again.");
     }
   };
 
@@ -34,13 +34,13 @@ export default function PasswordCheckPage() {
       <Nav />
       <S.Container>
         <FormContainer onSubmit={onSubmit} methods={methods}>
-          <S.Title>비밀번호 입력</S.Title>
+          <S.Title>Enter Password</S.Title>
 
           <S.InputContainer>
-            <InputField name="password" label="비밀번호" type="password" />
+            <InputField name="password" label="Password" type="password" />
           </S.InputContainer>
 
-          <S.SubmitButton type="submit">내 정보 조회하기</S.SubmitButton>
+          <S.SubmitButton type="submit">Verify</S.SubmitButton>
         </FormContainer>
       </S.Container>
     </>
